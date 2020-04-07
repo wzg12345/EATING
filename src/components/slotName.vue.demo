@@ -1,0 +1,49 @@
+<template>
+    <div>
+        <table cellpadding="0" cellspacing="0">
+            <colgroup>
+                <slot></slot>
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+            </colgroup>
+            <thead>
+            <tr>
+                <slot></slot>
+                <th>星期</th>
+                <th>菜品一</th>
+                <th>菜品二</th>
+                <th>价格(¥)</th>
+            </tr>
+            <tr v-for="(lists,i) in listtt">
+                <slot v-html="lists.week"></slot>
+                <td>{{lists.week}}</td>
+                <td>{{parentJson(lists.menuArrayId).meatId}}</td>
+                <td>{{parentJson(lists.menuArrayId).soupId}}</td>
+                <td>{{lists.priceTotal}}</td>
+            </tr>
+            </thead>
+        </table>
+
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "slotName",
+        props:['listDans'],
+        data(){
+            return{
+                listtt:this.listDans
+            }
+        },
+        mounted(){
+            console.log(this.listtt)
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
